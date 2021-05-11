@@ -16,8 +16,8 @@ class CreateOperationTable extends Migration
         Schema::create('operation', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('notaire_id');
-            $table->foreign('notaire_id')->references('id')->on('notaire');
+            $table->foreignId('notaire_id');
+            $table->enum('type',['vente','louer','donation']);
             $table->timestamps();
         });
     }

@@ -15,8 +15,7 @@ class CreateNotaireTable extends Migration
     {
         Schema::create('notaire', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }
