@@ -18,6 +18,10 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+
 </head>
 
 <body class="font-sans antialiased">
@@ -40,7 +44,7 @@
             {{ $slot }}
         </main>
     </div>
-
+    <a href="#header" class="fixed bottom-5 right-5 text-2xl"><i class="fa fa-arrow-up"></i></a>
     @stack('modals')
 
     @livewireScripts

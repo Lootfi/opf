@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav id="header" x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -20,6 +20,32 @@
                     <x-jet-nav-link href="{{ route('somewhere') }}" :active="request()->routeIs('somewhere')">
                         {{ __('Somewhere') }}
                     </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 my-3 sm:ml-5 sm:flex hover:bg-gray-200">
+                    @if (Auth::user()->isNotaire())
+                    <x-jet-dropdown width="60">
+                        <x-slot name="trigger">
+                            <button type="button"
+                                class="inline-flex items-center pt-3 px-3 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                Opérations
+
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <div class="w-60">
+                                <x-jet-dropdown-link href="{{ route('operations.inscrire') }}"
+                                    :active="request()->routeIs('operations.inscrire')">
+                                    {{ __('Inscrire Opération') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('operations.list') }}"
+                                    :active="request()->routeIs('operations.list')">
+                                    {{ __('Liste des Opérations') }}
+                                </x-jet-dropdown-link>
+                            </div>
+                        </x-slot>
+                    </x-jet-dropdown>
+                    @endif
                 </div>
             </div>
 

@@ -18,9 +18,11 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "postcss-import": "^14.0.1",
-        "tailwindcss": "^2.0.1"
+        "tailwindcss": "^2.0.1",
+        "webpack-livereload-plugin": "^1.2.0"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.2.0",
         "bootstrap": "^5.0.0"
     }
 }

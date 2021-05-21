@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OperationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::group(['domain' => 'help.localhost'], function () {
+//     Route::get('/', function () {
+//         return view('dashboard');
+//     });
+// });
 
 Route::get('/', function () {
     return view('welcome.home');
@@ -26,4 +33,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/somewhere', function () {
         return view('somewhere');
     })->name('somewhere');
+});
+
+Route::middleware(['auth:sanctum', 'verified', 'notaires'])->prefix('operations')->group(function () {
+    Route::get('/', [OperationController::class, 'list'])->name('operations.list');
+    Route::get('/inscrire', [OperationController::class, 'inscrireView'])->name('operations.inscrire');
 });

@@ -28,7 +28,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type'
     ];
 
     /**
@@ -61,16 +60,34 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function info()
+
+    public function notaire()
     {
-        switch ($this->stat) {
-            case 'responsable':
-                DB::table('responsable')->where('user_id',$this->id)->get();
-                break;
-            
-            case 'notaire':
-                DB::table('notaire')->where('user_id',$this->id)->get();
-                break;
-        }
+        return $this->hasOne(Notaire::class);
+    }
+
+    public function isNotaire()
+    {
+        return $this->notaire ? true : false;
+    }
+
+    public function responsable()
+    {
+        return $this->hasOne(Responsable::class);
+    }
+
+    public function isResponsable()
+    {
+        return $this->responsable ? true : false;
+    }
+
+    public function citoyen()
+    {
+        return $this->hasOne(Citoyen::class);
+    }
+
+    public function isCitoyen()
+    {
+        return $this->citoyen ? true : false;
     }
 }

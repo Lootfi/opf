@@ -23,9 +23,9 @@ class OperationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        return view('notaires.operations.list');
     }
 
     /**
@@ -33,9 +33,9 @@ class OperationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function inscrireView()
     {
-        //
+        return view('notaires.operations.inscrire');
     }
 
     /**

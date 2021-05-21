@@ -15,7 +15,10 @@ class CreateCitoyensTable extends Migration
     {
         Schema::create('citoyens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

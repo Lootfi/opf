@@ -1,4 +1,8 @@
 {
     "editor.formatOnSave": true,
-    "prettier.arrowParens": "avoid"
+    "prettier.arrowParens": "avoid",
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    }
 }
