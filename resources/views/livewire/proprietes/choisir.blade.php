@@ -23,7 +23,7 @@
                                     Supperficie Totale
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
+                                    <span class="sr-only">Choisir</span>
                                 </th>
                             </tr>
                         </thead>
@@ -49,7 +49,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                                        wire:click="choosePropriete({{$propriété}})">Choisir</a>
+                                        wire:click="choosePropriete({{$propriété}})" @click="step++">Choisir</a>
                                 </td>
                             </tr>
                             @endforeach

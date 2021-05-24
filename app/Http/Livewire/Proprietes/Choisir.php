@@ -18,7 +18,7 @@ class Choisir extends Component
 
     public function choosePropriete(Immobilier $propriété)
     {
-        dd($propriété->proprietaires);
+        $this->emitUp('PropriétéChoisi', $propriété, $propriété->proprietaires->all());
     }
 
     public function render()

@@ -43,7 +43,12 @@
                             </div>
 
                             <div x-show="step === 3">
-                                <div class="text-lg font-bold text-gray-700 leading-tight">Confirmation</div>
+                                <div class="text-lg font-bold text-gray-700 leading-tight">Recherche Client
+                                </div>
+                            </div>
+                            <div x-show="step === 4">
+                                <div class="text-lg font-bold text-gray-700 leading-tight">Confirmation d'opération
+                                </div>
                             </div>
                         </div>
 
@@ -63,11 +68,13 @@
                     {{-- First Step --}}
                     <div x-show.transition.in="step === 1">
                         <div x-show="doneChoisir == false">
-                            @livewire('citoyens.search')
+                            @livewire('citoyens.search',key('choisir_proprietaire_' . $id_proprietaire))
                         </div>
                         <div x-show="doneChoisir">
                             <button @click="doneChoisir = false" wire:click="reset_proprietaire">back</button>
-                            @livewire('citoyens.card', ['citoyen_id' => $id_proprietaire], key($id_proprietaire))
+                            <div>
+                                @livewire('citoyens.card', ['citoyen_id' => $id_proprietaire], key($id_proprietaire))
+                            </div>
                         </div>
                     </div>
 
@@ -77,7 +84,9 @@
 
                     <div x-show.transition.in="step === 2">
                         @isset($id_proprietaire)
-                        @livewire('proprietes.choisir', ['id_proprietaire' => $id_proprietaire], key($id_proprietaire))
+                        <div>@livewire('proprietes.choisir', ['id_proprietaire' => $id_proprietaire],
+                            key($id_proprietaire))
+                        </div>
                         @endisset
 
                     </div>
@@ -86,12 +95,24 @@
                     {{-- Third Step --}}
 
                     <div x-show.transition.in="step === 3">
-
-                        {{-- @livewire('operations.confirmer', ['user' => $user], key($user->id)) --}}
-
+                        <div x-show="doneChoisirClient == false">
+                            @livewire('clients.search', key('choisir_client_' . $id_client))
+                        </div>
+                        <div x-show="doneChoisirClient == true">
+                            <button @click="doneChoisirClient = false" wire:click="reset_client">back</button>
+                            <div>@livewire('clients.card', ['client_id' => $id_client], key($id_client))</div>
+                        </div>
                     </div>
 
                     {{-- /Third Step --}}
+                    {{-- Fourth Step --}}
+
+                    {{-- <div x-show.transition.in="step === 4">
+                        @livewire('operations.confirmer', key(2222))
+
+                    </div> --}}
+
+                    {{-- /Fourth Step --}}
 
                 </div>
                 {{-- <!-- / Step Content --> --}}
@@ -112,12 +133,12 @@
                             class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium disabled:opacity-50">
                             Next
                         </button>
-                        <button x-show="step == 2" @click="step++"
+                        <button x-show="step == 3" @click="step++" x-bind:disabled="!doneChoisirClient"
                             class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
                             Next
                         </button>
 
-                        <button @click="step = 'complete'" x-show="step === 3"
+                        <button x-show="step === 4" @click="step = 'complete'"
                             class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Complete</button>
                     </div>
                 </div>
@@ -133,28 +154,7 @@
             return {
                 step: 1,
                 doneChoisir: false,
-                passwordStrengthText: '',
-                togglePassword: false,
-                password: '',
-                gender: 'Male',
-
-                checkPasswordStrength() {
-                    var strongRegex = new RegExp(
-                        "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-                    var mediumRegex = new RegExp(
-                        "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
-                    );
-
-                    let value = this.password;
-
-                    if (strongRegex.test(value)) {
-                        this.passwordStrengthText = "Strong password";
-                    } else if (mediumRegex.test(value)) {
-                        this.passwordStrengthText = "Could be stronger";
-                    } else {
-                        this.passwordStrengthText = "Too weak";
-                    }
-                }
+                doneChoisirClient: false,
             }
         }
 
