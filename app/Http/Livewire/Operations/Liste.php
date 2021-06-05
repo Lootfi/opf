@@ -17,7 +17,7 @@ class Liste extends Component
                 break;
 
             case 'responsable':
-                $this->operations = Operation::where('status', 'En attente')->get();
+                $this->operations = Operation::where('status', 'en attente')->get();
                 break;
 
             case 'notaire':

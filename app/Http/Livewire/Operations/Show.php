@@ -11,14 +11,14 @@ class Show extends Component
 
     public function validateOperation()
     {
-        $this->operation->status = "Vérifié";
+        $this->operation->status = "vérifié";
         $this->operation->save();
         $this->redirect('/operations');
     }
 
     public function refuseOperation()
     {
-        $this->operation->status = "Refusé";
+        $this->operation->status = "refusé";
         $this->operation->save();
         $this->redirect('/operations');
     }
