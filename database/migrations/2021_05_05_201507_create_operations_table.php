@@ -18,11 +18,7 @@ class CreateOperationsTable extends Migration
 
             $table->unsignedBigInteger('notaire_id');
             $table->foreign('notaire_id')->references('id')->on('notaires')->onDelete('cascade');
-
-            $table->unsignedBigInteger('responsable_id');
-            $table->foreign('responsable_id')->references('id')->on('responsables')->onDelete('cascade');
-
-
+            
             $table->enum('type', ['vente', 'louer', 'donation']);
             $table->timestamps();
         });
