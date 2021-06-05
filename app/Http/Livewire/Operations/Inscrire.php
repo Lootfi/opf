@@ -32,7 +32,8 @@ class Inscrire extends Component
                     'responsable_id' => null,
                     'proprietaire_id' => $this->proprietaire->id,
                     'immobilier_id' => $this->propriété->id,
-                    'client_id' => $this->client->id
+                    'client_id' => $this->client->id,
+                    'status' => 'En attente'
                 ]);
                 break;
 
@@ -43,7 +44,8 @@ class Inscrire extends Component
                     'responsable_id' => null,
                     'proprietaire_id' => $this->proprietaire->id,
                     'immobilier_id' => $this->propriété->id,
-                    'client_id' => $this->client->id
+                    'client_id' => $this->client->id,
+                    'status' => 'En attente'
                 ]);
                 break;
         }
