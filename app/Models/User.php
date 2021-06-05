@@ -57,7 +57,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        'profile_photo_url', 'role'
     ];
 
 
@@ -89,5 +89,12 @@ class User extends Authenticatable
     public function isCitoyen()
     {
         return $this->citoyen ? true : false;
+    }
+
+    public function getRoleAttribute()
+    {
+        if ($this->isCitoyen()) return 'citoyen';
+        elseif ($this->isResponsable()) return 'responsable';
+        else return 'notaire';
     }
 }

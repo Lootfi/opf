@@ -1,4 +1,4 @@
-<div>
+<div class="col-span-6 sm:col-span-4">
     <form wire:submit.prevent="searchCitoyen">
         <div class="mb-5">
             <label for="firstname" class="font-bold mb-1 text-gray-700 block">Nom du

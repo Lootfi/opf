@@ -17,12 +17,6 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 my-3 sm:ml-5 sm:flex hover:bg-gray-200">
-                    <x-jet-nav-link href="{{ route('somewhere') }}" :active="request()->routeIs('somewhere')">
-                        {{ __('Somewhere') }}
-                    </x-jet-nav-link>
-                </div>
-                <div class="hidden space-x-8 my-3 sm:ml-5 sm:flex hover:bg-gray-200">
-                    @if (Auth::user()->isNotaire())
                     <x-jet-dropdown width="60">
                         <x-slot name="trigger">
                             <button type="button"
@@ -34,18 +28,21 @@
 
                         <x-slot name="content">
                             <div class="w-60">
+                                @if (Auth::user()->isNotaire())
                                 <x-jet-dropdown-link href="{{ route('operations.inscrire') }}"
                                     :active="request()->routeIs('operations.inscrire')">
                                     {{ __('Inscrire Opération') }}
                                 </x-jet-dropdown-link>
+                                @endif
+                                @if (Auth::user()->isNotaire() || Auth::user()->isResponsable())
                                 <x-jet-dropdown-link href="{{ route('operations.list') }}"
                                     :active="request()->routeIs('operations.list')">
                                     {{ __('Liste des Opérations') }}
                                 </x-jet-dropdown-link>
+                                @endif
                             </div>
                         </x-slot>
                     </x-jet-dropdown>
-                    @endif
                 </div>
             </div>
 

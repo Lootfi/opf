@@ -57,7 +57,7 @@ class OperationController extends Controller
      */
     public function show(Operation $operation)
     {
-        //
+        return view('notaires.operations.show', ['operation' => $operation]);
     }
 
     /**

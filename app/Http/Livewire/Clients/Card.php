@@ -21,6 +21,7 @@ class Card extends Component
     public function setClient()
     {
         $this->client = Citoyen::with('user')->where('user_id', $this->client_id)->first();
+        $this->emitTo('operations.inscrire', 'chooseClient', $this->client_id);
     }
 
     public function render()

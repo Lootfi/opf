@@ -25,7 +25,12 @@
     <div class="">
         <x-welcome.header />
     </div>
-
+    <div id="hero">
+        <x-welcome.hero />
+    </div>
+    <div id="services">
+        <x-welcome.services />
+    </div>
     <div class="">
         <x-welcome.footer />
     </div>

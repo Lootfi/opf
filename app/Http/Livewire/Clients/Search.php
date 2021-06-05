@@ -23,6 +23,7 @@ class Search extends Component
     public function chooseClient($clientId)
     {
         $this->emitTo('clients.card', 'choisirClient', $clientId);
+        $this->emitUp('chooseClient', $clientId);
     }
 
     public function render()

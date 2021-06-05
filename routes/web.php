@@ -35,7 +35,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('somewhere');
 });
 
-Route::middleware(['auth:sanctum', 'verified', 'notaires'])->prefix('operations')->group(function () {
-    Route::get('/', [OperationController::class, 'list'])->name('operations.list');
-    Route::get('/inscrire', [OperationController::class, 'inscrireView'])->name('operations.inscrire');
+Route::middleware(['auth:sanctum', 'verified'])->prefix('operations')->group(function () {
+    Route::get('/', [OperationController::class, 'list'])->middleware(['roles:notaire,responsable,citoyen'])->name('operations.list');
+    Route::get('/inscrire', [OperationController::class, 'inscrireView'])->middleware('roles:notaire')->name('operations.inscrire');
+    Route::get('/{operation}', [OperationController::class, 'show'])->middleware(['roles:notaire,responsable,citoyen'])->name('operations.show');
 });

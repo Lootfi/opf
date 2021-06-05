@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CitoyenMiddleware;
 use App\Http\Middleware\NotaireMiddleware;
 use App\Http\Middleware\ResponsableMiddleware;
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'notaires' => NotaireMiddleware::class,
         'responsables' => ResponsableMiddleware::class,
         'citoyens' => CitoyenMiddleware::class,
+        'roles' => CheckRole::class
     ];
 }
