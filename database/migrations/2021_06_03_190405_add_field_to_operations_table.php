@@ -14,7 +14,7 @@ class AddFieldToOperationsTable extends Migration
     public function up()
     {
         Schema::table('operations', function (Blueprint $table) {
-            $table->enum('status', ['En attente', 'Vérifié', 'Refusé'])->default('en attente');
+            $table->enum('status', ['enattente', 'verifie', 'refuse'])->default('enattente');
         });
     }
 
