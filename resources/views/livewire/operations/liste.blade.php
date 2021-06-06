@@ -51,26 +51,26 @@
                             @endif
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 @switch($operation->status)
-                                @case("En attente")
-                                <span>{{$operation->status}}</span>
+                                @case("enattente")
+                                <span>En attente</span>
                                 @break
-                                @case("Refusé")
-                                <span class="text-red-600">{{$operation->status}}</span>
+                                @case("refuse")
+                                <span class="text-red-600">Refusé</span>
                                 @break
-                                @case('Vérifié')
-                                <span class="text-green-600">{{$operation->status}}</span>
+                                @case('verifie')
+                                <span class="text-green-600">Validé</span>
                                 @endswitch
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 @switch($operation->status)
-                                @case("En attente")
+                                @case("enattente")
                                 <a href="{{ url('/operations/'.$operation->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900">Informations</a>
                                 @break
-                                @case("Refusé")
+                                @case("refuse")
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Modifier</a>
                                 @break
-                                @case('Vérifié')
+                                @case('verifie')
                                 <a href="{{ url('operations/'.$operation->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900">Fiche Foncière</a>
                                 @endswitch
