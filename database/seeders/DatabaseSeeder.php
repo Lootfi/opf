@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
                 $user->responsable()->saveMany(Responsable::factory(1)->create([
                     'user_id' => $user->id
                 ]));
+                $user->email = 'responsable' . $user->responsable->id . '@gmail.com';
+                $user->save();
             });
 
             // Notaires
@@ -36,6 +38,8 @@ class DatabaseSeeder extends Seeder
                 $user->notaire()->saveMany(Notaire::factory(1)->create([
                     'user_id' => $user->id
                 ]));
+                $user->email = 'notaire' . $user->notaire->id . '@gmail.com';
+                $user->save();
             });
 
             // Citoyens
@@ -45,6 +49,8 @@ class DatabaseSeeder extends Seeder
                 ])->each(function ($citoyen) {
                     $citoyen->proprietes()->saveMany(Immobilier::factory(10)->create());
                 }));
+                $user->email = 'citoyen' . $user->citoyen->id . '@gmail.com';
+                $user->save();
             });
 
             DB::commit();
