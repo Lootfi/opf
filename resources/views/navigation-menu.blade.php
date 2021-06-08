@@ -22,7 +22,6 @@
                             <button type="button"
                                 class="inline-flex items-center pt-3 px-3 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
                                 Opérations
-
                             </button>
                         </x-slot>
 
@@ -34,12 +33,10 @@
                                     {{ __('Inscrire Opération') }}
                                 </x-jet-dropdown-link>
                                 @endif
-                                @if (Auth::user()->isNotaire() || Auth::user()->isResponsable())
                                 <x-jet-dropdown-link href="{{ route('operations.list') }}"
                                     :active="request()->routeIs('operations.list')">
                                     {{ __('Liste des Opérations') }}
                                 </x-jet-dropdown-link>
-                                @endif
                             </div>
                         </x-slot>
                     </x-jet-dropdown>
@@ -181,6 +178,16 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+            @if (Auth::user()->isNotaire())
+            <x-jet-responsive-nav-link href="{{ route('operations.inscrire') }}"
+                :active="request()->routeIs('operations.inscrire')">
+                {{ __('Inscrire Opération') }}
+            </x-jet-responsive-nav-link>
+            @endif
+            <x-jet-responsive-nav-link href="{{ route('operations.list') }}"
+                :active="request()->routeIs('operations.list')">
+                {{ __('Liste des Opérations') }}
             </x-jet-responsive-nav-link>
         </div>
 
