@@ -55,10 +55,30 @@
                                 <span>En attente</span>
                                 @break
                                 @case("refuse")
-                                <span class="text-red-600">Refusé</span>
+                                <div class="group relative flex flex-col items-center">
+                                    <span class="text-red-600">Refusée</span>
+                                    <div
+                                        class="absolute bottom-0 flex-col items-center opacity-0 mb-6 group-hover:opacity-100">
+                                        <span
+                                            class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                                            refusée {{$operation->updated_at->diffForHumans()}} [
+                                            {{$operation->updated_at}} ]</span>
+                                        <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                                    </div>
+                                </div>
                                 @break
                                 @case('verifie')
-                                <span class="text-green-600">Validé</span>
+                                <div class="group relative flex flex-col items-center">
+                                    <span class="text-green-600">Validée</span>
+                                    <div
+                                        class="absolute bottom-0 flex-col items-center opacity-0 mb-6 group-hover:opacity-100">
+                                        <span
+                                            class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-indigo-600 rounded-md shadow-lg">
+                                            validée {{$operation->updated_at->diffForHumans()}} [
+                                            {{$operation->updated_at}} ]</span>
+                                        <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                                    </div>
+                                </div>
                                 @endswitch
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
