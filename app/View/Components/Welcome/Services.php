@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class welcome.hero extends Component
+class Services extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class welcome.hero extends Component
      */
     public function render()
     {
-        return view('components.welcome.hero');
+        return view('components.welcome.services');
     }
 }
