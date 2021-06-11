@@ -26,6 +26,7 @@ module.exports = {
             opacity: ["disabled"],
             divideColor: ["group-hover"],
             flex: ["group-hover"],
+            
         },
     },
 

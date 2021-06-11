@@ -186,7 +186,7 @@
     </div>
 
     <div>
-        @if (auth()->user()->role == 'responsable')
+        @if (auth()->user()->role == 'responsable' && $operation->status == 'enattente')
         <div>
             <button wire:click="validateOperation"
                 class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

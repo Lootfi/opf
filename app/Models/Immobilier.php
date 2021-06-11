@@ -17,4 +17,9 @@ class Immobilier extends Model
     {
         return $this->belongsToMany(Citoyen::class, 'citoyen_immobiliers');
     }
+
+    public function middleman()
+    {
+        return $this->hasOne(CitoyenImmobilier::class, 'immobilier_id');
+    }
 }
