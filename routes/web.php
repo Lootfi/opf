@@ -24,16 +24,11 @@ Route::get('/', function () {
     return view('welcome.home');
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $responsables = App\Models\Responsable::with('user')->get();
+    return view('dashboard', [
+        'responsables' => $responsables
+    ]);
 })->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/somewhere', function () {
-        return view('somewhere');
-    })->name('somewhere');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('operations')->group(function () {
     Route::get('/', [OperationController::class, 'list'])->middleware(['roles:notaire,responsable,citoyen'])->name('operations.list');

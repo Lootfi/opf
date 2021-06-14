@@ -5,3 +5,13 @@
 html {
     scroll-behavior: smooth;
 }
+
+.fix-width {
+    width: 200%;
+}
+
+@media (max-width: 1022px) {
+    .fix-width {
+        width: 100%;
+    }
+}
