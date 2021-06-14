@@ -68,7 +68,7 @@
                                 </div>
                                 @break
                                 @case('verifie')
-                                <div class="group relative flex flex-col items-center">
+                                <div class="group relative flex flex-col">
                                     <span class="text-green-600">Validée</span>
                                     <div
                                         class="absolute bottom-0 flex-col items-center opacity-0 mb-6 group-hover:opacity-100">
