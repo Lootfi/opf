@@ -33,7 +33,6 @@
                 </div>
 
                 <div class="p-6 bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-
                     @isset($responsables)
                     <ul class="fix-width grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         @foreach ($responsables as $respo)
